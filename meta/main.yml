@@ -8,6 +8,9 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - precise
+  - name: Arch Linux
+    version: 
+    - 2016.03.01
   categories:
     - networking
 dependencies: []

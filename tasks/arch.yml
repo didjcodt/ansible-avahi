@@ -1,16 +1,20 @@
 ---
 
 - name: Install avahi-daemon package
-  pacman: pkg=avahi-daemon state=present
-
-- name: Install avahi-utils package
-  when: avahi_install_utils
-  pacman: pkg=avahi-utils state=present
+  pacman: pkg=avahi,nss-mdns state=present
 
 - name: Avahi | Update avahi config
   template:
     src: avahi-daemon.conf.j2
     dest: "/etc/avahi/avahi-daemon.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Avahi | Install discovery service
+  template:
+    src: multiple.service.j2
+    dest: "/etc/avahi/services/multiple.service"
     owner: root
     group: root
     mode: 0644
